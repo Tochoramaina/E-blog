@@ -16,7 +16,7 @@ const Header = () => {
        <button className='w-12 h-10 lg:hidden' color='gray' pill><AiOutlineSearch/></button>
        <div className='flex gap-2 md:order-2'>
           <button className='w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></button>
-           <Link to='/sign-in'><button gradientDuoTone="purpleToBlue">Sign In</button></Link>
+           <Link to='/sign-in'><button gradientDuoTone="purpleToBlue" outline>Sign In</button></Link>
            <Navbar.Toggle/>
        </div>
         <Navbar.Collapse>

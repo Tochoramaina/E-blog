@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link, useLocation} from 'react-router-dom'
-import {Navbar, TextInput} from 'flowbite-react'
-import {AiOutlineSearch} from 'react-icons/ai'
-import {FaMoon} from 'react-icons/fa'
+import { Navbar, TextInput, Button} from 'flowbite-react';
+import {AiOutlinseSearch} from 'react-icons/ai';
+import {FaMoon} from "react-icons/fa"
 const Header = () => {
     const path = useLocation().pathname;
   return (
@@ -11,12 +11,12 @@ const Header = () => {
         <span className='px-2 py-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>Maina's</span>Blog
         </Link>
         <form>
-            <TextInput type='text' placeholder='Search...' rightIcon={<AiOutlineSearch/>} className='hidden lg:inline'/>
+            <TextInput type='text' placeholder='Search...'  className='hidden lg:inline'/>
         </form>
-       <button className='w-12 h-10 lg:hidden' color='gray' pill><AiOutlineSearch/></button>
+       <Button className='w-12 h-10 lg:hidden' color='gray' pill><AiOutlinseSearch/></Button>
        <div className='flex gap-2 md:order-2'>
-          <button className='w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></button>
-           <Link to='/sign-in'><button gradientDuoTone="purpleToBlue" outline>Sign In</button></Link>
+          <Button className='w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></Button>
+           <Link to='/sign-in'><Button gradientDuoTone="purpleToBlue" outline>Sign In</Button></Link>
            <Navbar.Toggle/>
        </div>
         <Navbar.Collapse>

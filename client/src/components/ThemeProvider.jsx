@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux';
 
-function ThemeProvider({children}) {
+export default function ThemeProvider({children}) {
     const {theme} = useSelector((state) => state.theme)
   return (
     <div className={theme}>
@@ -12,4 +12,3 @@ function ThemeProvider({children}) {
   )
 }
 
-export default ThemeProvider

@@ -10,5 +10,5 @@ export default function ThemeProvider({children}) {
         </div>
     </div>
   )
-}
+} 
 

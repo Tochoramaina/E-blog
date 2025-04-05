@@ -49,9 +49,9 @@ const Header = () => {
            <Navbar.Toggle/>
         </div>
         <Navbar.Collapse>
-              <Navbar.Link><Link to='/' active ={path === '/'} as={'div'}>Home</Link></Navbar.Link>
-              <Navbar.Link><Link to='/about' active = {path === '/about'} as={'div'}>About</Link></Navbar.Link>
-              <Navbar.Link><Link to='/projects' active={path === '/projects'} as={'div'}>Projects</Link></Navbar.Link>
+              <Navbar.Link as={'div'}><Link to='/' active ={path === '/'}>Home</Link></Navbar.Link>
+              <Navbar.Link as={'div'}><Link to='/about' active = {path === '/about'}>About</Link></Navbar.Link>
+              <Navbar.Link as={'div'}><Link to='/projects' active={path === '/projects'}>Projects</Link></Navbar.Link>
             
         </Navbar.Collapse>
        

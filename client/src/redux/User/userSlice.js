@@ -10,33 +10,46 @@ const userSlice = createSlice({
     initialState,
     reducers : {
         signInStart : (state) => {
-            state.loading = true,
-            state.error = null
+            state.loading = true;
+            state.error = null;
         },
         signInSuccess : (state, action) => {
             state.currenUser = action.payload,
-            state.loading = false,
-            state.error = null
+            state.loading = false;
+            state.error = null;
         },
         signInFailure : (state, action) => {
-            state.loading = false,
-            state.error = action.payload
+            state.loading = false;
+            state.error = action.payload;
         },
         updateStart: (state) => {
-            state.loading = true,
-            state.error = null
+            state.loading = true;
+            state.error = null;
         },
         updateSuccess : (state, action) => {
-            state.currenUser = action.payload,
-            state.loading = false,
-            state.error = null
+            state.currenUser = action.payload;
+            state.loading = false;
+            state.error = null;
         },
         updateFailure: (state, action)=> {
-            state.loading = false,
+            state.loading = false;
+            state.error = action.payload;
+        },
+        deleteUserStart : (state) => {
+            state.loading = true;
+            state.error  = null;
+        },
+        deleteUserSuccess : (state) => {
+            state.currentUser = null;
+            state.loading = false;
+
+        },
+        deleteUserFailure : (state, action) =>{
+            state.loading = false;
             state.error = action.payload
         }
     }
 })
 
-export const {signInStart, signInSuccess, signInFailure, updateStart, updateSuccess, updateFailure} = userSlice.actions;
+export const {signInStart, signInSuccess, signInFailure, updateStart, updateSuccess, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure} = userSlice.actions;
 export default userSlice.reducer;

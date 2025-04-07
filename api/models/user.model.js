@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
     profilePicture : {
         type : String,
         default : ' '
-    }
+    },
+    isAdmin: {
+        type : Boolean,
+        default : false
+    } 
 }, {timestamps : true})
 
 const User = mongoose.model("User", userSchema)

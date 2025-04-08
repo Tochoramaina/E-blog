@@ -2,6 +2,7 @@ import { Alert, Button, Modal, TextInput } from 'flowbite-react';
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage';
 import { app } from '../firebase';
 import {CircularProgressbar} from 'react-circular-progressbar';
@@ -11,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const DashProfile = () => {
-  const {currentUser, error} = useSelector(state => state.user);
+  const {currentUser, error, loading} = useSelector(state => state.user);
   const [imageFile, setImagefile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const filePickerref = useRef();
@@ -169,11 +170,19 @@ const DashProfile = () => {
         <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username} onChange={handleChange}/>
         <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange}/>
         <TextInput type='password' id='password' placeholder='password' onChange={handleChange}/>
-        <Button type='submit' gradientDuoTone='purpleToBlue' outline>Update</Button>
+        <Button type='submit' gradientDuoTone='purpleToBlue' outline disabled={loading || imageFileUploading}>{loading ? 'loading' : "Update"}</Button>
+        {currentUser.isAdmin && (
+         <Link to={'/create-post'}>
+          <Button type='button' gradientDuoTone='purpleToPink' className='w-full'>
+            Create a post
+          </Button>
+         </Link>
+        )
+        }
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
         <span onClick={() => setshowModal(true)} className='cursor-pointer'>Delete Account</span>
-        <span className='cursor-pointer' onClick={handleSignOut}>Sign Out</span>
+        <span className='cursor-pointer' onClick={handleSignOut}>Sign Out</span>  
       </div>
       {updateUserSuccess && (
         <Alert color='success' className='mt-5'>

@@ -1,6 +1,7 @@
 import { Button, Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import CallToAction from '../components/CallToAction';
 const PostPage = () => {
     const {postSlug} = useParams(); 
     const [loading, setLoading] = useState(true);
@@ -15,12 +16,14 @@ const PostPage = () => {
                 if(!res.ok){
                     setError(true)
                     setLoading(false);
+                    console.log(error)
                     return;
                 }
                 if(res.ok){
                     setPost(data.posts[0]);
                     setLoading(false);
                     setError(false)
+                    
                 }
             } catch (error) {
                 setError(true);
@@ -47,6 +50,9 @@ const PostPage = () => {
             <span className='italic'>{post && (post.content.length/1000).toFixed(0)} mins read</span>
         </div>
         <div className='p-3 max-w-2xl mx-auto w-full post-content' dangerouslySetInnerHTML={{__html: post && post.content}}></div>
+        <div className='max-w-full mx-auto w-full'>
+            <CallToAction/>
+        </div>
     </main>
   )
 }

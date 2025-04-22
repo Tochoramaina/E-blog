@@ -74,11 +74,18 @@ export default function Comment({comment, onLike, onEdit}){
                         comment.numberOfLikes + "" + (comment.numberOfLikes === 1 ? 'like' : 'likes')
                         }
                     </p>
-                    {
+                  <>
+                  {
                        currentUser && (currentUser._id === comment.userId || currentUser.isAdmin) && (
                         <button type='button' className='text-gray-600 hover:text-green-500' onClick={handleEdit}>Edit</button>
                        )
                     }
+                    {
+                        currentUser && (currentUser._id === currentUser.userId || currentUser.isAdmin) && (
+                            <button type='button' onClick={() => onDelete(comment._id)} className='text-red-600'>Delete</button>
+                        )
+                    }
+                  </>
                 </div>
                     </>
                 )}

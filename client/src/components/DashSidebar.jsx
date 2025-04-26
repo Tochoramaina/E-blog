@@ -1,6 +1,6 @@
-import { Sidebar } from 'flowbite-react'
+import { Sidebar, SidebarItem } from 'flowbite-react'
 import React from 'react'
-import {HiUser, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiAnnotation} from 'react-icons/hi';
+import {HiUser, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiAnnotation, HiArrowRight, HiChartPie} from 'react-icons/hi';
 import { useState, useEffect } from 'react';
 import { Link, useLocation} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -37,6 +37,13 @@ const DashSidebar = () => {
   return (
    <Sidebar className='w-full md:w-56'>
     <Sidebar.ItemGroup className='flex flex-col gap-1'>
+      {
+        currentUser && currentUser.isAdmin &&(
+          <Link to='/dashboard?tab=dash'>
+             <SidebarItem active={tab === 'dash' || !tab} icon={HiChartPie} as='div'>Dashboard</SidebarItem>
+          </Link>
+        )
+      }
        <Link to='/dashboard?tab=profile'>
             <Sidebar.Item active = {tab === 'profile'} icon={HiUser} label={currentUser.isAdmin ? 'Admin' : 'User'} labelColor = 'dark' as='div'>
                     Profile
